@@ -1,0 +1,24 @@
+.icon-bubble {
+	width: max-content;
+	height: max-content;
+	background-color: var(--color-bg-light-40);
+	padding: var(--gap-small);
+	border-radius: 100%;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon-bubble {
+	width: 32px;
+	height: 32px;
+}
+
+@media screen and (max-width: 600px) {
+	.icon-bubble {
+		width: 26px;
+		height: 26px;
+		padding: .765rem;
+	}
+}

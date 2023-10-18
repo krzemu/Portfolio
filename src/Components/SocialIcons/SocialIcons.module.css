@@ -1,0 +1,9 @@
+.social-icons * {
+	box-sizing: content-box;
+}
+
+.social-icons {
+	display: flex;
+	flex-direction: row;
+	gap: var(--gap-small);
+}

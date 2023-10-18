@@ -1,0 +1,6 @@
+.card {
+	width: 100%;
+	height: max-content;
+	box-shadow: var(--shadow-big);
+	border-radius: var(--gap-small);
+}

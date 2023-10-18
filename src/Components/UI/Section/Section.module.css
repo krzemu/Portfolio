@@ -1,0 +1,16 @@
+.section {
+	width: 100%;
+	height: 95svh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding-block: var(--gap-big);
+	box-shadow: 0 0 8px -2px #00000030;
+}
+
+.section__inner {
+	width: 80%;
+	height: inherit;
+}
