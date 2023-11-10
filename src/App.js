@@ -1,9 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import HeroSection from './Components/HeroSection/HeroSection';
 
 function App() {
   return (
-    <div className='underline'>Hello world</div>
+    <HeroSection />
   );
 }
 
