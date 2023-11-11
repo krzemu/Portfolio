@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment, useState } from 'react';
+import Header from './Components/Layout/Header/Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css'
+import HeroSection from './Components/Layout/Sections/HeroSection/HeroSection';
+import ProjectsSection from './Components/Layout/Sections/ProjectsSection/ProjectsSection';
+import AboutMeSection from './Components/Layout/Sections/AboutMe/AboutMeSection';
+export default function App() {
+    const [viewportSection, setViewportSection] = useState(0);
+
+
+    return (
+        <Fragment>
+            <Header />
+            <HeroSection />
+            <ProjectsSection />
+        </Fragment>
+    );
 }
-
-export default App;
