@@ -51,7 +51,10 @@ const Header = () => {
     let renderedClasses = `${classes.header} ${active ? '' : classes.hidden}`;
 
     return (
-        <header ref={headerRef} className={renderedClasses}>
+        <header
+            ref={headerRef}
+            className={`w-full flex flex-row justify-center items-center bg-stale-700 fixed top-0 bottom-auto inset-x-0 z-40 backdrop-filter-sm shadow-sm ${active ? '' : 'invisible'}`}
+        >
             <nav>
                 <ul className={classes['nav-list']}>
                     {renderedNav}

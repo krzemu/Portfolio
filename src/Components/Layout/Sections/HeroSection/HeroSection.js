@@ -73,10 +73,9 @@ const HeroSection = () => {
                 ref={subHedRef}
             >Łukasz_Tryczyński_</h2>
             <SocialIcons ref={socialIconsRef} />
-            <Button>Yolo</Button>
         </div>
         <div className="w-full flex justify-end items-end" >
-            <img src={featuredImage} width='250' ref={imgRef} />
+            <img src={featuredImage} width='500' ref={imgRef} className='w-1/2 rounded-full p-2 shadow-xl' />
         </div>
 
     </Section>

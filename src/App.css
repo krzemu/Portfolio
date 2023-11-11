@@ -42,7 +42,6 @@ body {
 	background-color: var(--color-bg);
 	color: var(--color-font);
 	font-family: var(--font-family);
-	height: 500vh;
 }
 
 h1,

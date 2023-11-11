@@ -1,11 +1,12 @@
+import Section from '../../../UI/Section/Section';
 import classes from './AboutMeSection.module.css';
 
 const AboutMeSection = () => {
 
     return (
-        <section className={classes['about-me']}>
+        <Section className='backdrop-blur-xl'>
             <div>Yolo</div>
-        </section>
+        </Section>
     )
 }
 

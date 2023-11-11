@@ -36,7 +36,15 @@ const DUMMY_PROJECTS = [
 const ProjectsSection = () => {
     const [stateData, setStateData] = useState([...DUMMY_PROJECTS]);
     const projectsRef = useRef(null);
-    let renderedData = stateData.map((item, i) => <ProjectCard key={i} className='project-card' title={item.title} desc={item.desc} href={item.href} tags={item.tags} />);
+    let renderedData = stateData.map((item, i) =>
+        <ProjectCard
+            key={i}
+            className='project-card'
+            title={item.title}
+            desc={item.desc}
+            href={item.href}
+            tags={item.tags} />
+    );
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -47,9 +55,12 @@ const ProjectsSection = () => {
         return () => ctx.revert();
     }, []);
 
-    return <Section className={classes['projects-section']} ref={projectsRef}>
+    return <Section
+        className='bg-slate-800/80 overflow-hidden backdrop-blur-sm'
+        ref={projectsRef}
+    >
         <h2>Projects</h2>
-        <div className={classes['projects-grid']} >
+        <div className='grid grid-cols-2 py-16 gap-16 place-items-stretch' >
             {DUMMY_PROJECTS.length === 0 ? '' : renderedData}
 
         </div>
