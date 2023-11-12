@@ -1,14 +1,17 @@
 import { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap-trial';
-import { SplitText } from 'gsap-trial/SplitText';
+import { gsap } from 'gsap';
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+
 import featuredImage from '../../../../Assets/featured_image.jpg';
 import SocialIcons from '../../../SocialIcons/SocialIcons';
 import Section from '../../../UI/Section/Section';
+// import HeroNav from './HeroNav.jsx';
 
-import SplitLetter from '../../../Misc/SplitLetter';
+import SplitText from '../../../Misc/SplitText';
 
-gsap.registerPlugin(SplitText);
 
+gsap.registerPlugin(ScrollTrigger);
 
 
 const HeroSection = () => {
@@ -23,13 +26,20 @@ const HeroSection = () => {
     const { headerRef, subHeadRef, imgRef, socialIconsRef } = HeroRef;
 
     useLayoutEffect(() => {
-        const tl = gsap.timeline({ defaults: { duration: .15 } });
-        let headerSplit = new SplitText(headerRef.current, { type: "chars" });
-        let subHeadSplit = new SplitText(subHeadRef.current, { type: "chars" });
-        headerRef.textContnet = SplitLetter(headerRef.current.textContent);
-        subHeadRef.textContent = SplitLetter(subHeadRef.current.textContent);
-        console.log(headerRef);
-        console.log(subHeadRef);
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: headerRef.current,
+                start: 'top 10%',
+                end: '+=200',
+            }, defaults: { duration: .15 }
+        });
+        // let headerSplit = new SplitText(headerRef.current, { type: "chars" });
+        // let subHeadSplit = new SplitText(subHeadRef.current, { type: "chars" });
+
+
+        const headerSplit = new SplitText(headerRef.current, {});
+        const subHeadSplit = new SplitText(subHeadRef.current, {});
+
 
         // Change SplitText to SplitLetter, animate from splitletter
 
@@ -46,7 +56,7 @@ const HeroSection = () => {
         );
         tl.fromTo(
             imgRef.current,
-            { opacity: 0, y: 40, scale: .4 },
+            { opacity: 0, y: 400, scale: .4 },
             { opacity: 1, scale: 1, y: 0 },
             "-=.3"
         );
@@ -62,7 +72,8 @@ const HeroSection = () => {
 
 
     return <Section
-        className="flex flex-col justify-center items-center gap-16"
+        id="hero-section"
+        className="h-[95vh] flex flex-col justify-center items-center gap-16"
     >
         <div className='w-full flex flex-col justify-start items-center lg:items-start gap-16 mb-16'>
             <h1
@@ -77,8 +88,14 @@ const HeroSection = () => {
             >Łukasz_Tryczyński_</h2>
             <SocialIcons ref={socialIconsRef} />
         </div>
-        <div className="w-full flex justify-center lg:justify-end items-end" >
-            <img src={featuredImage} width='500' ref={imgRef} className='w-full md:w-1/2 rounded-full p-2 shadow-xl' />
+        <div className="w-full flex flex-row justify-center lg:justify-end items-start" >
+            {/* <HeroNav /> */}
+            <img
+                src={featuredImage}
+                width='500'
+                ref={imgRef}
+                className='w-full lg:w-1/2 md:-mt-8 rounded-full p-2 shadow-xl '
+            />
         </div>
 
     </Section>

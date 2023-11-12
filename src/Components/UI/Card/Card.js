@@ -1,15 +1,18 @@
+import { forwardRef } from "react";
 
-const Card = (props) => {
+
+const Card = forwardRef(function (props, ref) {
     return (
         <div
-            className={`w-full h-max shadow-xl rounded-xl ${props.className ? props.className : ''}`}
+            className={`h-max rounded-xl shadow-xl ${props.className ? props.className : ''}`}
             onMouseEnter={props.onMouseEnter}
             onMouseLeave={props.onMouseLeave}
             onClick={props.onClick}
+            ref={ref}
         >
             {props.children}
         </div>
     )
-}
+})
 
 export default Card;

@@ -6,6 +6,7 @@ function IconPopup(props) {
             fill="currentColor"
             height="1em"
             width="1em"
+            className={props.className}
             onMouseEnter={props.onMouseEnter}
             onMouseLeave={props.onMouseLeave}
         >
