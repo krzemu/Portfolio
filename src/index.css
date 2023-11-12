@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (min-width: 640px) {
-	.sm\:text-stroke {
+@media (min-width: 1024px) {
+	.lg\:text-stroke {
 		-webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
 		-webkit-text-stroke-width: 1px;
 		-webkit-text-stroke-color: var(--color-font);
