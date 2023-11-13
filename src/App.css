@@ -86,12 +86,16 @@ li {
 	width: 14px;
 }
 
-*::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track:vertical {
 	background: #1b1e2b;
 }
 
+*::-webkit-scrollbar-track:horizontal {
+	background: #1e293b;
+}
+
 *::-webkit-scrollbar-thumb {
-	background-color: #292d3e;
+	background-color: #363b50;
 	border-radius: 2px;
 	border: 0px solid #292d3e;
 }

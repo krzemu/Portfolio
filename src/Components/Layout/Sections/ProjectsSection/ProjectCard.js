@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 import Card from '../../../UI/Card/Card';
@@ -9,10 +9,16 @@ import IconCodepen from '../../../Icons/IconCodepen';
 
 
 
-const ProjectCard = ({ title, desc, href, tags, className, thumbnail }) => {
+const ProjectCard = ({ title, desc, href, tags, className, video }) => {
     const [stateTooltip, setStateTooltip] = useState(false);
+    const [videoHoverState, setVideoHoverState] = useState(false);
     const actionRef = useRef(null);
     const cardRef = useRef(null);
+    const videoRef = useRef();
+
+    useEffect(() => {
+        videoRef.current.src = video;
+    }, []);
 
 
     const onEnterTag = ({ target }) => {
@@ -51,6 +57,23 @@ const ProjectCard = ({ title, desc, href, tags, className, thumbnail }) => {
 
     ))
 
+    const onMouseEnterHandler = (e) => {
+        setVideoHoverState(true);
+    }
+    const onMouseLeaveHandler = (e) => {
+        setVideoHoverState(false);
+    }
+
+    const videoMouseEnterHander = (e) => {
+        videoRef.current.play();
+    }
+    const videoMouseLeaveHander = (e) => {
+        videoRef.current.pause();
+        setTimeout(() => {
+            videoRef.current.currentTime = 0;
+        }, 50)
+    }
+
     return (
         <Card
             className={`bg-slate-900 flex flex-col items-start gap-8 ${className ? className : ''}`}
@@ -58,8 +81,21 @@ const ProjectCard = ({ title, desc, href, tags, className, thumbnail }) => {
             onMouseLeave={onLeaveCard}
             ref={cardRef}
         >
-            <div className=' px-3 pt-3 rounded-t-md'>
-                <img src={thumbnail} width='500' height='300' className='w-full rounded-t-md' />
+            <div
+                className=' px-3 pt-3 rounded-t-md'
+                onMouseEnter={onMouseEnterHandler}
+                onMouseLeave={onMouseLeaveHandler}
+            >
+                <video
+                    width="500"
+                    className="w-full h-auto rounded-xl"
+                    muted
+                    loop
+                    ref={videoRef}
+                    onMouseEnter={videoMouseEnterHander}
+                    onMouseLeave={videoMouseLeaveHander}
+                />
+
             </div>
             <div className="flex flex-col px-6">
                 <div className="flex flex-col items-start gap-8">
@@ -97,7 +133,7 @@ const ProjectCard = ({ title, desc, href, tags, className, thumbnail }) => {
             <div className="flex flex-row bg-transparent gap-4 px-6 pb-8" >
                 {renderedTags}
             </div>
-        </Card>
+        </Card >
     )
 };
 

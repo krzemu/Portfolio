@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 const Section = forwardRef(function Section(props, ref) {
-
+    const { onClick, onMouseEnter, onMouseLeave, onMouseMove, children, className, classNameInner } = props;
     return (
         <div
             className={`w-full min-h-[95svh] relative flex flex-col items-center py-16 shadow-lg ${props.className ? props.className : ''}`}
@@ -11,10 +11,10 @@ const Section = forwardRef(function Section(props, ref) {
             onMouseMove={props.onMouseMove}
             ref={ref}
         >
-            <div className='w-4/5 h-full'>
+            <div className={`w-4/5 h-full ${classNameInner ? classNameInner : ''}`}>
                 {props.children}
             </div>
-        </div>
+        </div >
     )
 });
 

@@ -14,6 +14,7 @@ export default function App() {
       <Header />
       <HeroSection />
       <ProjectsSection />
+      <AboutMeSection />
     </Fragment>
   );
 }
