@@ -49,7 +49,7 @@ const AboutMeSection = () => {
                 start: 'top center',
                 end: '10%',
                 scub: 1,
-                markers: true,
+                // markers: true,
             },
             defaults: {
                 duration: .3

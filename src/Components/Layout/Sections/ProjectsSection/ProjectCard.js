@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 
 import Card from '../../../UI/Card/Card';
@@ -9,16 +9,18 @@ import IconCodepen from '../../../Icons/IconCodepen';
 
 
 
-const ProjectCard = ({ title, desc, href, tags, className, video }) => {
+const ProjectCard = ({ title, desc, href, tags, className, image }) => {
     const [stateTooltip, setStateTooltip] = useState(false);
     const [videoHoverState, setVideoHoverState] = useState(false);
     const actionRef = useRef(null);
     const cardRef = useRef(null);
-    const videoRef = useRef();
+    const videoRef = useRef(null);
+    const imgRef = useRef(null);
+    const imgWrapperRef = useRef(null);
 
-    useEffect(() => {
-        videoRef.current.src = video;
-    }, []);
+    // useEffect(() => {
+    //     videoRef.current.src = video;
+    // }, []);
 
 
     const onEnterTag = ({ target }) => {
@@ -58,20 +60,41 @@ const ProjectCard = ({ title, desc, href, tags, className, video }) => {
     ))
 
     const onMouseEnterHandler = (e) => {
-        setVideoHoverState(true);
+        // setVideoHoverState(true);
+
     }
     const onMouseLeaveHandler = (e) => {
-        setVideoHoverState(false);
+        // setVideoHoverState(false);
     }
 
-    const videoMouseEnterHander = (e) => {
-        videoRef.current.play();
+    const imgHoverTimeline = gsap.timeline({
+        paused: true
+    })
+    imgHoverTimeline.fromTo(
+        imgRef.current,
+        { y: 0 },
+        { y: () => (-imgRef.current.clientHeight), duration: 10 }
+        // **********************
+        // **********************
+        // **********************
+        // imgWrapperRef.current.clientHeight not found GSAP
+        // Need to set new y
+    );
+
+    const imgMouseEnterHander = (e) => {
+        // videoRef.current.play();
+        imgHoverTimeline.progress(0);
+        imgHoverTimeline.play();
+
     }
-    const videoMouseLeaveHander = (e) => {
-        videoRef.current.pause();
-        setTimeout(() => {
-            videoRef.current.currentTime = 0;
-        }, 50)
+    const imgMouseLeaveHander = (e) => {
+        // videoRef.current.pause();
+        // setTimeout(() => {
+        //     videoRef.current.currentTime = 0;
+        // }, 50)'
+        imgHoverTimeline.pause();
+        imgHoverTimeline.progress(0);
+
     }
 
     return (
@@ -82,11 +105,12 @@ const ProjectCard = ({ title, desc, href, tags, className, video }) => {
             ref={cardRef}
         >
             <div
-                className=' px-3 pt-3 rounded-t-md'
+                className='px-3 mt-3 rounded-t-md h-96 overflow-hidden'
                 onMouseEnter={onMouseEnterHandler}
                 onMouseLeave={onMouseLeaveHandler}
+                ref={imgWrapperRef}
             >
-                <video
+                {/* <video
                     width="500"
                     className="w-full h-auto rounded-xl"
                     muted
@@ -94,6 +118,12 @@ const ProjectCard = ({ title, desc, href, tags, className, video }) => {
                     ref={videoRef}
                     onMouseEnter={videoMouseEnterHander}
                     onMouseLeave={videoMouseLeaveHander}
+                /> */}
+                <img
+                    src={image}
+                    onMouseEnter={imgMouseEnterHander}
+                    onMouseLeave={imgMouseLeaveHander}
+                    ref={imgRef}
                 />
 
             </div>

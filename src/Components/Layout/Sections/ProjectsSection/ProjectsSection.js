@@ -3,12 +3,14 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Section from '../../../UI/Section/Section';
 import ProjectCard from './ProjectCard';
-import ciemneszkProjectImg from '../../../../Assets/Projects/ciemneszkielko-project-card-background.jpg';
-import dorjanProjectImg from '../../../../Assets/Projects/dorjanenergia-project-card-background.jpg';
-import ltmediaProjectImg from '../../../../Assets/Projects/ltmedia-project-card-background.jpg';
+import ciemneszkProjectImg from '../../../../Assets/Projects/ciemneszkielko.jpg';
+import dorjanProjectImg from '../../../../Assets/Projects/dorjan.jpg';
+import ltmediaProjectImg from '../../../../Assets/Projects/ltmedia.jpg';
 import szkielkoVideo from '../../../../Assets/Projects/szkielko.mp4';
 import ltmediaVideo from '../../../../Assets/Projects/ltmedia.mp4';
 import dorjanVideo from '../../../../Assets/Projects/dorjan.mp4';
+
+
 
 const DUMMY_PROJECTS = [
     {
@@ -16,32 +18,28 @@ const DUMMY_PROJECTS = [
         desc: 'Lorem Ipsum is simply dummy text',
         href: 'https://google.com',
         tags: [{ t: 'React.js', c: '#7fd0f2' }, { t: 'Gsap', c: '#6ae357' }, { t: 'Next.js', c: '#000000' }, { t: 'MongoDB', c: '#0f294c' }],
-        thumbnail: ciemneszkProjectImg,
-        video: szkielkoVideo
+        image: ltmediaProjectImg
     },
     {
         title: 'E-commerce Cloth Store',
         desc: 'Lorem Ipsum is simply dummy text',
         href: 'https://google.com',
         tags: [{ t: 'React.js', c: '#7fd0f2' }, { t: 'Gsap', c: '#6ae357' }, { t: 'Next.js', c: '#000000' }, { t: 'MongoDB', c: '#0f294c' }],
-        thumbnail: dorjanProjectImg,
-        video: dorjanVideo
+        image: dorjanProjectImg
     },
     {
         title: 'E-commerce Cloth Store',
         desc: 'Lorem Ipsum is simply dummy text',
         href: 'https://google.com',
         tags: [{ t: 'React.js', c: '#7fd0f2' }, { t: 'Gsap', c: '#6ae357' }, { t: 'Next.js', c: '#000000' }, { t: 'MongoDB', c: '#0f294c' }],
-        thumbnail: ltmediaProjectImg,
-        video: ltmediaVideo
+        image: ciemneszkProjectImg
     },
     {
         title: 'E-commerce Cloth Store',
         desc: 'Lorem Ipsum is simply dummy text',
         href: 'https://google.com',
         tags: [{ t: 'React.js', c: '#7fd0f2' }, { t: 'Gsap', c: '#6ae357' }, { t: 'Next.js', c: '#000000' }, { t: 'MongoDB', c: '#0f294c' }],
-        thumbnail: ciemneszkProjectImg,
-        video: szkielkoVideo
+        image: dorjanProjectImg
     }
 ];
 
@@ -57,8 +55,9 @@ const ProjectsSection = () => {
             desc={item.desc}
             href={item.href}
             tags={item.tags}
-            thumbnail={item.thumbnail}
-            video={item.video}
+            image={item.image}
+        // thumbnail={item.thumbnail}
+        // video={item.video}
         />
     );
 
